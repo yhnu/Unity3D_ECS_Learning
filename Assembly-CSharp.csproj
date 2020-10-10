@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CreateEntityDemo\CreateEntityDemo.cs" />
     <Compile Include="Assets\Scripts\ECS\EmptyData.cs" />
+    <Compile Include="Assets\Scripts\AddRemoveComponent\AddRemoveComponent.cs" />
+    <Compile Include="Assets\Scripts\ECS\IntData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
