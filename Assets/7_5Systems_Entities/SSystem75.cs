@@ -33,7 +33,7 @@ public class SSystem75 : SystemBase
 
         Entities
             .WithStoreEntityQueryInField(ref query)
-            .ForEach((Entity e, int entityInQueryIndex, int nativeThreadIndex, in CData75 data) => {
+            .ForEach((Entity e, int entityInQueryIndex,in int nativeThreadIndex, in CData75 data) => {
 
                 UnityEngine.Debug.LogFormat("{0} {1}", entityInQueryIndex, nativeThreadIndex);
                 // Implement the work to perform for each entity here.
@@ -47,7 +47,7 @@ public class SSystem75 : SystemBase
             })
         .WithoutBurst()
         .WithName("OnUpdate")
-        .Run();
+        .Schedule();
     }
 }
 
@@ -64,4 +64,6 @@ public class SSystem75 : SystemBase
  * 针对ForEach的lambda表达式,有一些特殊的参数,你可以传递.
  * 
  * Q: 为甚么都是entityInQueryIndex 和 nativeThreadIndex 是一样的数值
+ * 
+ * A: 需要使用in int nativeThreadIndex
  */
