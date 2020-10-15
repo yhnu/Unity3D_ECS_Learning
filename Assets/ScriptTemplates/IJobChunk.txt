@@ -1,0 +1,74 @@
+using Unity.Burst;
+using Unity.Collections;
+using Unity.Entities;
+using Unity.Jobs;
+using Unity.Mathematics;
+using Unity.Transforms;
+
+[DisableAutoCreation]
+public class #SCRIPTNAME# : SystemBase
+{
+	private EntityQuery m_Query;
+	protected override void OnCreate()
+    {
+		// method1 
+        // m_Query = GetEntityQuery(ComponentType.ReadOnly<Rotation>(), ComponentType.ReadOnly<RotationSpeed>());
+		
+		// method2
+		//var queryDescription = new EntityQueryDesc()
+		//{
+		//	None = new ComponentType[]
+		//	{
+		//		typeof(Static)
+		//	},
+		//	All = new ComponentType[]
+		//	{
+		//		ComponentType.ReadWrite<Rotation>(),	//ComponentType指定类型的同时标记是否对数据读写
+		//		ComponentType.ReadOnly<RotationSpeed>()
+		//	},
+		//  Any = new ComponentType[]
+		//  {
+		//  }
+		//};
+		//m_Query = GetEntityQuery(queryDescription)
+		
+		// method3
+		//var queryDescription0 = new EntityQueryDesc
+		//{
+		//	All = new ComponentType[] {typeof(Rotation)}
+		//};
+		//var queryDescription1 = new EntityQueryDesc
+		//{
+		//	All = new ComponentType[] {typeof(RotationSpeed)}
+		//};
+		//m_Query = GetEntityQuery(new EntityQueryDesc[] {queryDescription0, queryDescription1});
+		
+	
+        //...
+    }
+
+    protected override void OnUpdate()
+    {
+		var job = new #SCRIPTNAME#_Job()
+        {
+            CInputA_TypeHandle = GetComponentTypeHandle<CInputA>(),
+            CInputB_TypeHandle = GetComponentTypeHandle<CInputB>(),
+            COutput_TypeHandle = GetComponentTypeHandle<COutput>()           
+        };
+
+        this.Dependency = job.ScheduleParallel(m_Query, this.Dependency);
+    }
+}
+
+[BurstCompile]
+struct #SCRIPTNAME#_Job : IJobChunk
+{
+    public float DeltaTime;
+    public ComponentTypeHandle<Rotation> RotationTypeHandle;
+    [ReadOnly] public ComponentTypeHandle<RotationSpeed> RotationSpeedTypeHandle;
+
+    public void Execute(ArchetypeChunk chunk, int chunkIndex, int firstEntityIndex)
+    {
+        // ...
+    }
+}

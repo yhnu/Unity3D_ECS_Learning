@@ -31,5 +31,14 @@ namespace Unity.Entities.Editor
                 $"{TemplatesRoot}/System.txt",
                 "NewSystem.cs");
         }
+
+        [MenuItem("Assets/ECS/System_IJobChunk", priority = 13)]
+        public static void System_IJobChunk()
+        {
+            ProjectWindowUtil.CreateScriptAssetFromTemplateFile(
+                $"{TemplatesRoot}/IJobChunk.txt",
+                "NewSystem.cs");
+        }
+
     }
 }
