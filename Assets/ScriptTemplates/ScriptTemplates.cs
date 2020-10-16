@@ -40,5 +40,12 @@ namespace Unity.Entities.Editor
                 "NewSystem.cs");
         }
 
+        [MenuItem("Assets/ECS/System_IJobParallelFor", priority = 14)]
+        public static void System_IJobParallelFor()
+        {
+            ProjectWindowUtil.CreateScriptAssetFromTemplateFile(
+                $"{TemplatesRoot}/IJobParallelFor.txt",
+                "NewSystem.cs");
+        }
     }
 }
