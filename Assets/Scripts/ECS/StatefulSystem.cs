@@ -27,6 +27,13 @@ public class StatefulSystem : SystemBase
             );
         }
         //Execute the command buffer
+        /*
+         * 使用playback的效率,比使用EntityManager要快.
+         * 
+         * https://docs.unity3d.com/Packages/com.unity.entities@0.13/manual/sync_points.html
+         * Even on the main thread, it is typically faster to record commands in an ECB and then play back those commands, than it is to make the structural changes one-by-one using the EntityManager class itself.
+         * 
+         */
         creationBuffer.Playback(EntityManager);
     }
 
