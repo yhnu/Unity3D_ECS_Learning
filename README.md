@@ -27,9 +27,11 @@
 
 ## 第三章: NativeContainer Allocator
 
+[Native Container Allocator](https://github.com/yhnu/Unity3D_DOTS_Learning/blob/master/2020.10.26Unity3D_NativeMemoryAllocators.md/2020.10.26Unity3D_NativeMemoryAllocators.mdhttps://github.com/yhnu/Unity3D_DOTS_Learning/blob/master/2020.10.26Unity3D_NativeMemoryAllocators.md/2020.10.26Unity3D_NativeMemoryAllocators.md) 讲解原始内存分配器的的使用情况,以及优缺点
 
 
-## 第三章: JOBWithCode
+
+## 第四章: JOBWithCode
 
 [JobWithCode 详细使用说明已经注意事项](https://github.com/yhnu/Unity3D_DOTS_Learning/blob/master/2020.10.14Unity3D_DOTS_System_JOBWithCode.md/2020.10.14Unity3D_DOTS_System_JOBWithCode.md)
 
@@ -39,3 +41,9 @@
 2. Allocator不同传参对应不同的含义
 
 ![](_v_images/20201026141056539_27577.png)
+
+3. CompleteDependency 依赖同步问题处理,以及原始内存分配和释放
+   
+   使用 Dispose
+   
+   使用 WithDisposeOnCompletion
